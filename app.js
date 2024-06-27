@@ -14,12 +14,17 @@ const validar = require('./validar');
 const saltRounds = 10;
 
 app.use(cors({
-  origin: 'http://localhost:5173',
+  origin: process.env.URLFRONTEND || 'http://localhost:5173',
 
   credentials: true
 }))
 app.use(session({
-  secret: "123456789"
+  secret: process.env.SECRETSESSION || "123456789",
+  proxy:process.env.NODE_ENV==='production',
+  cookie:{
+    secure:process.env.NODE_ENV==='production',
+    sameSite:'none'
+  }
 }))
 
 
