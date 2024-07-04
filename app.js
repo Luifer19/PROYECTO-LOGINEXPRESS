@@ -1,6 +1,6 @@
 const express = require('express')
 const app = express()
-const port = process.env.PORT ||3000
+const port = process.env.PORT || 3000
 // Get the client
 
 const cors = require('cors')
@@ -20,10 +20,10 @@ app.use(cors({
 }))
 app.use(session({
   secret: process.env.SECRETSESSION || "123456789",
-  proxy:process.env.NODE_ENV==='production',
-  cookie:{
-    secure:process.env.NODE_ENV==='production',
-    sameSite: process.env.NODE_ENV==='production' ? 'none' : 'lax'
+  proxy: process.env.NODE_ENV === 'production',
+  cookie: {
+    secure: process.env.NODE_ENV === 'production',
+    sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax'
   }
 }))
 
